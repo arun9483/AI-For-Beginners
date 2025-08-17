@@ -1,14 +1,19 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
+import { createI18n } from 'vue-i18n';
+
 import App from './App.vue';
-Vue.config.productionTip = false;
 import router from './router';
 
-import VueI18n from 'vue-i18n';
-Vue.use(VueI18n);
+import messages from '@/assets/translations';
 
-const i18n = new VueI18n({
-	locale: 'en',
-	fallbackLocale: 'en',
+const i18n = createI18n({
+  legacy: false, // Use Composition API mode
+  locale: 'en',
+  fallbackLocale: 'en',
+  messages,
 });
 
-new Vue({ i18n, router, render: (h) => h(App) }).$mount('#app');
+const app = createApp(App);
+app.use(router);
+app.use(i18n);
+app.mount('#app');

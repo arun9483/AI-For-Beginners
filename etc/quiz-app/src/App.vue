@@ -19,9 +19,7 @@
     </nav>
     <div id="app">
       
-      <router-view>
-        <Quiz />
-      </router-view>
+     <router-view />
     </div>
   </div>
 </template>
